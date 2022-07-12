@@ -1,5 +1,5 @@
 <div class="w-full">
-  <h2 class="font-bold md:text-4xl text-2xl">What's on your <span class="text-red-500">mind?</span></h2>
+  <h2 class="font-bold md:text-4xl text-2xl">What's on your <span class="text-red-500">mind</span>, <%= Current.user.username %>?</h2>
   <%= form_with model: @blog_post, url: post_blog_path, class:"" do |f| %>
     <% if @blog_post.errors.any? %>
       <div class="bg-red-100 mt-8 border-l-4 border-red-500 text-red-700 p-4" role="alert">

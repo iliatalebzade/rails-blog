@@ -14,11 +14,12 @@ class PostController < ApplicationController
 
   def getpost
     @post = Post.find(params[:id])
+    @author = User.find(@post.user_id) # user_id
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body).merge(user_id: Current.user.id)
   end
 end
