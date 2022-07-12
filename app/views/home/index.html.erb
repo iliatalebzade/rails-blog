@@ -1,11 +1,22 @@
 <div class="w-full">
   <h1 class="font-bold md:text-7xl text-4xl"><span class="text-red-500">Killer</span> Blog</h1>
   <div class="mt-16 space-y-4 p-4 bg-gray-200 w-full rounded">
-    <% @posts.each do |post| %>
-      <ul class="bg-white p-4 rounded space-y-5">
-        <li class="font-bold md:text-lg"><%= post.title %></li>
-        <li><%= link_to "Read more", post_item_path(post), class:"rounded border font-medium p-1 border-red-500 text-red-500" %></li>
-      </ul>
+    <% if @posts.any? %>
+      <% @posts.each do |post| %>
+        <ul class="bg-white p-4 rounded space-y-5">
+          <li class="font-bold md:text-lg"><%= post.title %></li>
+          <li><%= link_to "Read more", post_item_path(post), class:"rounded border font-medium p-1 border-red-500 text-red-500" %></li>
+        </ul>
+      <% end %>
+    <% else %>
+      <div>
+        <h2 class="text-2xl font-semibold text-red-600">There are no posts for now</h2>
+        <% if Current.user %>
+          <%= link_to "Be the first by uploading yours!", post_blog_path, class:"text-xl px-2 mt-4 py-1 inline-block bg-black rounded text-white hover:text-red-500 duration-300" %>
+        <% else %>
+          <%= link_to "create an account and post the first!", register_path, class:"text-xl px-2 mt-4 py-1 inline-block bg-black rounded text-white hover:text-red-500 duration-300" %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
