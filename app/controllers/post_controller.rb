@@ -4,16 +4,16 @@ class PostController < ApplicationController
   end
 
   def new
-    @post = Post.new post_params
-    if @post.save
+    @blog_post = Post.new(post_params)
+    if @blog_post.save
       redirect_to root_path
     else
-      render :new
+      render :create
     end
   end
 
   def getpost
-    @post = Post.find params[:id]
+    @post = Post.find(params[:id])
   end
 
   private
