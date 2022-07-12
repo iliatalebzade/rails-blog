@@ -1,0 +1,48 @@
+<!-- component -->
+<div class="w-full">
+  <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
+    <div class="hidden lg:block lg:w-1/2 bg-cover" style="background-image:url('https://images.unsplash.com/photo-1520076794559-6a1229412a42?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80')"></div>
+    <div class="w-full p-8 lg:w-1/2">
+      <h2 class="text-2xl font-semibold text-gray-700 text-center"><span class="text-red-500">Killer</span> Blog</h2>
+      <div class="mt-4 flex items-center justify-between">
+        <span class="border-b w-1/5 lg:w-1/4"></span>
+        <span href="#" class="text-xs text-center text-gray-500 uppercase">register with email</span>
+        <span class="border-b w-1/5 lg:w-1/4"></span>
+      </div>
+      <%= form_with model: @new_user, url: register_path, class:"" do |f| %>
+        <% if @new_user.errors.any? %>
+          <div class="bg-red-100 mt-8 border-l-4 border-red-500 text-red-700 p-4" role="alert">
+            <p class="font-bold mb-4">Please consider fixing errors below in order to submit your article</p>
+            <% @new_user.errors.full_messages.each do |message| %>
+              <p class="ml-4">- <%= message %></p>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="space-y-8 mt-16">
+          <div class="flex flex-col gap-2">
+            <%= f.label :username, "Username", class:"font-medium" %>
+            <%= f.text_field :username, placeholder: "cool writer", class: "bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" %>
+          </div>
+          <div class="flex flex-col gap-2">
+            <%= f.label :email, "Email Address", class:"font-medium" %>
+            <%= f.text_field :email, placeholder: "name@company.com", class: "bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" %>
+          </div>
+          <div class="flex flex-col gap-2">
+            <%= f.label :password, "Password", class:"font-medium" %>
+            <%= f.password_field :password, placeholder: "************", class: "bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" %>
+          </div>
+          <div class="flex flex-col gap-2">
+            <%= f.label :password_confirmation, "Confirm password", class:"font-medium" %>
+            <%= f.password_field :password_confirmation, placeholder: "************", class: "bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" %>
+          </div>
+          <div class="mt-8">
+            <%= f.submit "Sign up", class:"bg-red-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-red-600" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="text-center block my-4 font-semibold">
+    have an account already? <%= link_to "Log in!", login_path, class:"underline text-red-500" %>
+  </div>
+</div>

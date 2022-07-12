@@ -19,8 +19,20 @@
       <%= link_to "Blogs", root_path, class:"block mt-4 lg:inline-block lg:mt-0 text-gray-100 hover:text-white mr-4" %>
       <%= link_to "About", root_path, class:"block mt-4 lg:inline-block lg:mt-0 text-gray-100 hover:text-white mr-4" %>
     </div>
-    <div>
-      <%= link_to "Post a blog", post_blog_path, class: "inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-red-500 hover:bg-white mt-4 lg:mt-0" %>
-    </div>
+    <%# <div> %>
+    <%#= link_to "Post a blog", post_blog_path, class: "inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-red-500 hover:bg-white mt-4 lg:mt-0" %>
+    <%# </div> %>
+    <% if Current.user %>
+      <p class="font-semibold">
+        <%= link_to dashboard_path, class:"text-white font-bold bg-red-800 p-2 rounded" do %>
+          <span class="text-white font-bold"><%= Current.user.username %></span>
+        <% end %>
+      </p>
+    <% else %>
+      <div>
+        <%= link_to "Register", register_path, class: "inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-red-500 hover:bg-white mt-4 lg:mt-0" %>
+        <%= link_to "Log in", login_path, class: "inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-red-500 hover:bg-white mt-4 lg:mt-0" %>
+      </div>
+    <% end %>
   </div>
 </nav>

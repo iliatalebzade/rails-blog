@@ -1,0 +1,8 @@
+<div class="">
+  <div class="border-l-8 border-red-500 pl-6 py-8">
+    <span class="text-2xl mb-2 block">currently signed in as:</span>
+    <h2 class="text-2xl md:text-6xl font-semibold"><%= Current.user.username %></h2>
+  </div>
+  <h3 class="text-1xl md:text-2xl font-semibold mt-8">Email: <%= Current.user.email %></h3>
+  <%= button_to "Log out", logout_path, method: :delete, class:"text-red-700 p-2 border border-red-500 rounded mt-4" %>
+</div>
