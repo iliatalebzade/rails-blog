@@ -1,0 +1,26 @@
+<div class="w-full">
+  <h2 class="font-bold md:text-4xl text-2xl">What's on your <span class="text-red-500">mind?</span></h2>
+  <%= form_with model: @blog_post, url: create_blog_post_path, class:"space-y-8" do |f| %>
+    <% if @blog_post.errors.any? %>
+      <div class="alert alert-danger p-4">
+        <h4>Please fix the mentioned problems:</h4>
+        <ul class="mb-0">
+          <% @blog_post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="flex flex-col gap-2">
+      <%= f.label :title, "Title", class:"font-medium" %>
+      <%= f.text_field :title, class: "w-full border-0 bg-gray-200 rounded" %>
+    </div>
+    <div class="flex flex-col gap-2">
+      <%= f.label :body, "Body", class:"font-medium" %>
+      <%= f.text_area :body, class: "w-full border-0 bg-gray-200 h-72 rounded" %>
+    </div>
+    <div class="">
+      <%= f.submit "Submit Article", class:"w-full text-left p-5 text-white rounded bg-red-500 cursor-pointer hover:bg-black" %>
+    </div>
+  <% end %>
+</div>

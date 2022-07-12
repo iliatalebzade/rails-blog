@@ -1,0 +1,15 @@
+<div class="w-full">
+  <div class="border-l-8 border-red-500 pl-4">
+    <p class="text-gray-500 mb-2">
+      <%= @post.created_at.strftime("%Y-%m-%d") %>
+    </p>
+    <h1 class="font-bold md:text-7xl text-4xl">
+      <%= @post.title %>
+    </h1>
+  </div>
+  <div class="w-full bg-gray-200 rounded p-4 mt-16">
+    <p class="leading-9">
+      <%= @post.body %>
+    </p>
+  </div>
+</div>
