@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root 'home#index'
   
   # posts
-  get 'post/create'
   get 'post_blog', to: 'post#create'
   post 'post_blog', to: 'post#new'
   get 'post/:id', to: 'post#getpost', as: 'post_item'
@@ -13,7 +12,8 @@ Rails.application.routes.draw do
   get 'login', to: 'authentication#login_page'
   post 'login', to: 'authentication#login'
   delete 'logout', to: 'authentication#logout'
-
+  
   # user
   get 'dashboard', to: 'user#dashboard'
+  get 'unauthorized', to: 'user#unauthorized'
 end

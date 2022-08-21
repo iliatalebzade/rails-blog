@@ -6,7 +6,7 @@ class UserController < ApplicationController
     if Current.user
       @blogs = Post.where(user_id: Current.user.id)
     else
-      render :unauthorized
+      redirect_to unauthorized_path
     end
   end
 end

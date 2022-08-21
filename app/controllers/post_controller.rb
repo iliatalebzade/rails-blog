@@ -1,6 +1,10 @@
 class PostController < ApplicationController
   def create
-    @blog_post = Post.new
+    if Current.user
+      @blog_post = Post.new
+    else
+      redirect_to unauthorized_path
+    end
   end
 
   def new
