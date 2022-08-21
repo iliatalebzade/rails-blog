@@ -1,0 +1,7 @@
+<div class="w-full h-full flex flex-col justify-center items-center">
+  <h1 class="text-2xl md:text-4xl mb-4 font-bold text-center text-red-500">You're unauthorized!</h1>
+  <p class="text-lg md:text-2xl mb-8 text-center font-semibold text-black">
+    users need to either <%= link_to "create an account", register_path, class:"underline text-red-500" %> or <%= link_to "login", login_path, class:"underline text-red-500" %> before entering this page and unfortunately you haven't
+  </p>
+  <img class="rounded shadow-xl h-86 overflow-hidden" src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bm90JTIwYWxsb3dlZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
+</div>

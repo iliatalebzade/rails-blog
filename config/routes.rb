@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'home#index'
+  
   # posts
   get 'post/create'
   get 'post_blog', to: 'post#create'
@@ -14,6 +16,4 @@ Rails.application.routes.draw do
 
   # user
   get 'dashboard', to: 'user#dashboard'
-
-  root 'home#index'
 end
