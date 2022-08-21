@@ -9,7 +9,7 @@
         <span href="#" class="text-xs text-center text-gray-500 uppercase">Login</span>
         <span class="border-b w-1/5 lg:w-1/4"></span>
       </div>
-      <%= form_with url: login_path, class:"" do |f| %>
+      <%= form_with url: login_path do |f| %>
         <div class="space-y-8 mt-16">
           <div class="flex flex-col gap-2">
             <%= f.label :email, "Email Address", class:"font-medium" %>
@@ -20,15 +20,10 @@
             <%= f.password_field :password, placeholder: "************", class: "bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" %>
           </div>
           <div class="mt-8">
-            <%= f.submit "Sign up", class:"bg-red-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-red-600" %>
+            <%= f.submit "Login", class:"bg-red-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-red-600" %>
           </div>
         </div>
       <% end %>
-      <%# <div class="mt-4 flex items-center justify-between"> %>
-      <%# <span class="border-b w-1/5 md:w-1/4"></span> %>
-      <%# <a href="#" class="text-xs text-gray-500 uppercase">or log in</a> %>
-      <%# <span class="border-b w-1/5 md:w-1/4"></span> %>
-      <%# </div> %>
     </div>
   </div>
   <div class="text-center block my-4 font-semibold">

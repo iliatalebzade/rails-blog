@@ -1,0 +1,23 @@
+<% if flash[:alert] %>
+  <div id="alertFlashMassage" data-controller="flashMessages" class="mt-8 flex items-center shadow-xl justify-between rounded bg-red-300 font-bold text-red-700 p-4 fixed top-12 w-96 left-2/4 translate-x-[-50%]" role="alert">
+    <div>
+      Alert!
+      <p><%= flash[:alert] %></p>
+    </div>
+    <span data-action="click->flashMessages#clicked" class="font-light ml-4 underline text-red-900 cursor-pointer">close</span>
+  </div>
+<% end %>
+
+<% if flash[:notice] %>
+  <div id="alertFlashMassage" data-controller="flashMessages" class="mt-8 flex items-center shadow-xl justify-between rounded bg-blue-300 font-bold text-blue-700 p-4 fixed top-12 w-96 left-2/4 translate-x-[-50%]" role="alert">
+    <p><%= flash[:notice] %></p>
+    <span data-action="click->flashMessages#clicked" class="font-light ml-4 underline text-blue-900 cursor-pointer">close</span>
+  </div>
+<% end %>
+
+<% if flash[:warning] %>
+  <div id="alertFlashMassage" data-controller="flashMessages" class="mt-8 flex items-center shadow-xl justify-between rounded bg-orange-300 font-bold text-orange-700 p-4 fixed top-12 w-96 left-2/4 translate-x-[-50%]" role="alert">
+    <p><%= flash[:warning] %></p>
+    <span data-action="click->flashMessages#clicked" class="font-light ml-4 underline text-orange-900 cursor-pointer">close</span>
+  </div>
+<% end %>
