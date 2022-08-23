@@ -10,9 +10,9 @@ class PostController < ApplicationController
   def new
     @blog_post = Post.new(post_params)
     if @blog_post.save
-      redirect_to root_path
+      redirect_to root_path, notice: "Post created successfully!"
     else
-      render :create
+      render :create, status: :unprocessable_entity
     end
   end
 
