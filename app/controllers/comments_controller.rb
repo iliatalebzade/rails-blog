@@ -1,8 +1,13 @@
 class CommentsController < ApplicationController
   def create
-    @comment = Current.user.comments.new(comment_params)
-    if @comment.save
-      redirect_to post_item_path(params[:id]), notice: "Comment uploaded successfully"
+    if Current.user
+      @comment = Current.user.comments.new(comment_params)
+      if @comment.save
+        redirect_to post_item_path(params[:id]), notice: "Comment uploaded successfully"
+      end
+    else
+      flash[:warning] = "You need to be signed in!"
+      redirect_to post_item_path(params[:id])
     end
   end
 
