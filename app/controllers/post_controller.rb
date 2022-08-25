@@ -8,8 +8,8 @@ class PostController < ApplicationController
   end
 
   def new
-    @blog_post = Post.new(post_params)
-    if @blog_post.save
+    blog_post = Post.new post_params
+    if blog_post.save
       redirect_to root_path, notice: "Post created successfully!"
     else
       render :create, status: :unprocessable_entity
@@ -18,7 +18,14 @@ class PostController < ApplicationController
 
   def getpost
     @post = Post.find(params[:id])
-    @author = User.find(@post.user_id) # user_id
+    @author = User.find(@post.user_id)
+    if Current.user
+      @new_comment = Comment.new
+    end
+  end
+
+  def new_comment
+    
   end
 
   private

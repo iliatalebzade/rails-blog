@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'post_blog', to: 'post#create'
   post 'post_blog', to: 'post#new'
   get 'post/:id', to: 'post#getpost', as: 'post_item'
+  # comment
+  post 'post/:id/comments', to: 'comments#create', as: 'post_comments'
 
   # auth
   get 'register', to: 'authentication#register'

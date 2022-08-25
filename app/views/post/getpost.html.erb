@@ -4,8 +4,8 @@
       <p class="text-gray-500 mb-2">
         <%= @post.created_at.strftime("%Y-%m-%d") %>
       </p>
-      <p class="text-gray-700 text-xl font-semibold mb-2">
-        <%= @author.username %>
+      <p class="text-gray-700 text-xl mb-2">
+        Written by: <small class="text-xl font-semibold"><%= @author.username %></small>
       </p>
     </div>
     <h1 class="font-bold text-4xl md:text-7xl">
@@ -16,5 +16,19 @@
     <p class="leading-9 font-bold text-4xl md:text-7xl">
       <%= @post.body %>
     </p>
+  </div>
+  <%# comments-related stuff: %>
+  <div id="comments-section" class="w-full rounded py-4 mt-16">
+    <div class="lg:flex gap-8">
+      <%# add comments form: %>
+      <div class="lg:w-1/2">
+        <%= render partial: "shared/commentsForm", locals: { post: @post } %>
+      </div>
+      <%# render posted comments (if there's any at all) %>
+      <div class="mt-8 lg:mt-0 lg:flex-1">
+        <h3 class="text-xl mb-3 font-semibold">Comments:</h3>
+        <%= render @post.comments.order(id: :desc) %>
+      </div>
+    </div>
   </div>
 </div>
