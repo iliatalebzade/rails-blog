@@ -12,6 +12,9 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      backgroundImage: {
+        'account-banner': "url('profile-banner.webp')",
+      }
     },
   },
   plugins: [

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'post/:id', to: 'post#getpost', as: 'post_item'
   # comment
   post 'post/:id/comments', to: 'comments#create', as: 'post_comments'
+  delete 'post/:id/delete_comment', to: 'comments#delete', as: 'delete_comment'
 
   # auth
   get 'register', to: 'authentication#register'
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
   
   # user
   get 'dashboard', to: 'user#dashboard'
+  get 'user/:id', to: 'user#show_user_or_dashboard', as: 'show_user'
   get 'unauthorized', to: 'user#unauthorized'
 
 end

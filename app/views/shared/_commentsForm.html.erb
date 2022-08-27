@@ -1,4 +1,4 @@
-<div class="w-full">
+<div class="w-full rounded shadow-md shadow-slate-300 p-4">
   <%= form_with model: @new_comment, url: post_comments_path(post.id), class:"rounded" do |f| %>
     <div class="space-y-4">
       <div class="flex flex-col gap-2">
@@ -7,7 +7,7 @@
         <%= f.text_area :content, class: "w-full border-0 bg-gray-200 rounded p-4", placeholder:"What's your take on this blog post?" %>
       </div>
       <div>
-        <%= f.submit "Add comment", class:"w-full text-left p-3 text-black font-semibold rounded bg-red-500 cursor-pointer hover:bg-black hover:text-red-500" %>
+        <%= f.submit "Add comment", class:"w-full text-left p-3 text-slate-900 font-semibold rounded bg-red-500 cursor-pointer hover:bg-black hover:text-red-500" %>
       </div>
     </div>
   <% end %>

@@ -11,6 +11,18 @@ class CommentsController < ApplicationController
     end
   end
 
+  def delete
+    @comment = Current.user.comments.find(params[:id])
+    if Current.user
+      @comment.destroy
+      flash[:warning] = "Your comment has been deleted!"
+      redirect_to post_item_path(params[:id])
+    else
+      flash[:warning] = "You need to be signed in!"
+      redirect_to post_item_path(params[:id])
+    end
+  end
+
   private
 
   def comment_params

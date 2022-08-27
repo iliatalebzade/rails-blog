@@ -18,7 +18,6 @@ class PostController < ApplicationController
 
   def getpost
     @post = Post.find(params[:id])
-    @author = User.find(@post.user_id)
     if Current.user
       @new_comment = Comment.new
     end

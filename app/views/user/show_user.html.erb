@@ -1,0 +1,26 @@
+<div class="w-full">
+  <div class="pl-6 rounded px-8 pb-8 pt-16 lg:py-16 space-y-4 bg-red-500 relative shadow-sm shadow-red-500">
+    <h2 class="text-2xl md:text-6xl font-bold mb-4 text-slate-900"><%= @user.username %></h2>
+    <div id="user-info" class="p-4 mt-2 rounded text-white shadow-sm shadow-slate-900 bg-slate-900 relative lg:absolute min-w-full w-full lg:w-[103%] lg:bottom-[-50px] lg:left-[-1.5%]">
+      <p class="text-xl block font-semibold">Joined at: <span><%= @user.created_at.strftime("%Y-%m-%d") %></span></p>
+    </div>
+  </div>
+  <% if @user.post.any? %>
+    <div class="mt-16 lg:mt-36 lg:shadow-md lg:shadow-slate-400 bg-gray-200 p-8 rounded">
+      <h2 class="mb-4 font-semibold text-xl">Your Articles (<%= @user.post.length %>) :</h2>
+      <div class="space-y-4">
+        <% @user.post.each do |blog| %>
+          <ul class="bg-white p-4 rounded space-y-5">
+            <li class="font-bold md:text-lg"><%= blog.title %></li>
+            <li><%= link_to "Read more", post_item_path(blog), class:"rounded border font-medium p-1 border-red-500 text-red-500" %></li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <div class="mt-16 lg:mt-36 lg:shadow-md lg:shadow-slate-400 p-8 rounded flex items-center justify-center gap-12 flex-col">
+      <h2 class="mb-4 font-semibold text-2xl text-center">No articles <span class="text-red-500">yet</span></h2>
+      <%= image_tag "no_articles.webp", alt: "no articles", class: "w-72" %>
+    </div>
+  <% end %>
+</div>
