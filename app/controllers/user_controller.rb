@@ -9,9 +9,12 @@ class UserController < ApplicationController
     end
   end
 
+  def show_user
+  end
+
   def show_user_or_dashboard
     @user = User.find(params[:id])
-    if selected_user = Current.user
+    if @user == Current.user
       redirect_to :dashboard
     else
       render :show_user

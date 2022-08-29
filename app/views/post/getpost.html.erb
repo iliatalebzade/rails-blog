@@ -1,18 +1,27 @@
 <div class="w-full">
-  <div class="space-y-4 bg-red-500 rounded shadow-sm shadow-red-500 px-8 py-16 pl-6">
-    <div class="">
+  <div class="relative bg-red-500 rounded shadow-sm shadow-red-500 px-8 py-16 pl-6">
+    <% if Current.user == @post.user %>
+      <%= link_to image_tag("pencil.webp", alt: "edit", class: "w-4 cursor-pointer"), edit_post_path(@post), class:"absolute right-4 top-4 rounded-full hover:bg-slate-900 p-2" %>
+    <% end %>
+    <div>
       <p class="text-white mb-2">
-        published in: <%= @post.created_at.strftime("%Y-%m-%d") %>
+        published at: <%= @post.created_at.strftime("%Y-%m-%d") %>
       </p>
-      <p class="text-white text-xl mb-2">
-        Written by: <%= link_to @post.user.username, show_user_path(@post.user), class:"font-semibold text-slate-900 hover:underline" %></small>
+      <p class="text-white text-xl">
+        Written by: 
+        <%= link_to show_user_path(@post.user), class:"font-semibold text-slate-900" do %>
+          <%= @post.user.username %>
+          <% if Current.user == @post.user %>
+            <span class="p-1">(You)</span>
+          <% end %>
+        <% end %>
       </p>
     </div>
-    <h1 class="font-bold border-l-8 text-slate-900 pl-4 border-slate-900 text-4xl md:text-7xl">
+    <h1 class="font-bold mt-8 border-l-8 text-slate-900 pl-4 border-slate-900 text-4xl md:text-7xl">
       <%= @post.title %>
     </h1>
   </div>
-  <div class="w-full bg-gray-200 rounded px-4 py-16 mt-16">
+  <div class="w-full relative bg-gray-200 rounded px-4 py-16 mt-16">
     <p class="leading-9 font-bold text-4xl md:text-7xl">
       <%= @post.body %>
     </p>

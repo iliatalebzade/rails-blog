@@ -7,7 +7,7 @@
   </div>
   <% if @user.post.any? %>
     <div class="mt-16 lg:mt-36 lg:shadow-md lg:shadow-slate-400 bg-gray-200 p-8 rounded">
-      <h2 class="mb-4 font-semibold text-xl">Your Articles (<%= @user.post.length %>) :</h2>
+      <h2 class="mb-4 font-semibold text-xl"><%= @user.username %>'s Articles (<%= @user.post.length %>) :</h2>
       <div class="space-y-4">
         <% @user.post.each do |blog| %>
           <ul class="bg-white p-4 rounded space-y-5">
