@@ -5,7 +5,7 @@
     <% end %>
     <div>
       <p class="text-white mb-2">
-        published at: <%= @post.created_at.strftime("%Y-%m-%d") %>
+        published on: <%= time_tag @post.created_at, "data-local": "time-ago" %>
       </p>
       <p class="text-white text-xl">
         Written by: 
@@ -30,13 +30,17 @@
   <div id="comments-section" class="w-full rounded py-4 mt-16">
     <div class="lg:flex gap-8">
       <%# add comments form: %>
-      <div class="lg:w-1/2">
+      <div class="relative lg:w-1/2">
         <%= render partial: "shared/commentsForm", locals: { post: @post } %>
       </div>
       <%# render posted comments (if there's any at all) %>
       <div class="mt-8 lg:mt-0 lg:flex-1 rounded shadow-md shadow-slate-300 p-4">
-        <h3 class="text-xl mb-3 font-semibold">Comments:</h3>
-        <%= render @post.comments.order(id: :desc) %>
+        <% if @post.comments.any? %>
+          <h3 class="text-xl mb-3 font-semibold">Comments:</h3>
+          <%= render @post.comments.order(id: :desc) %>
+        <% else %>
+          <h3 class="text-xl mb-3 font-semibold text-center">No comments <span class="text-red-500">yet</span></h3>
+        <% end %>
       </div>
     </div>
   </div>

@@ -7,28 +7,28 @@ class AuthenticationController < ApplicationController
     @new_user = User.new(user_params)
     if @new_user.save
       session[:user_id] = @new_user.id
-      redirect_to root_path, notice: "Successfully created an account, welcome!"
+      redirect_to root_path, notice: 'Successfully created an account, welcome!'
     else
-      flash.now[:alert] = "Invalid credentials, please adress the mentioned problems"
+      flash.now[:alert] = 'Invalid credentials, please adress the mentioned problems'
       render :register, status: :unprocessable_entity
     end
   end
-  
+
   def logout
     session[:user_id] = nil
-    flash[:warning] = "Sad to see you go, you have successfully logged out"
+    flash[:warning] = 'Sad to see you go, you have successfully logged out'
     redirect_to root_path
   end
-  
+
   def login_page; end
-  
+
   def login
     user = User.find_by(email: params[:email])
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path, notice: "Successfully logged in!"
+      redirect_to root_path, notice: 'Successfully logged in!'
     else
-      flash.now[:alert] = "Invalid E-mail or password"
+      flash.now[:alert] = 'Invalid E-mail or password'
       render :login_page, status: :unprocessable_entity
     end
   end

@@ -9,8 +9,7 @@ class UserController < ApplicationController
     end
   end
 
-  def show_user
-  end
+  def show_user; end
 
   def show_user_or_dashboard
     @user = User.find(params[:id])

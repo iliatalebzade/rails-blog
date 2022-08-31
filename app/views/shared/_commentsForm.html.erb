@@ -1,4 +1,7 @@
 <div class="w-full rounded shadow-md shadow-slate-300 p-4">
+  <div class="absolute flex justify-center items-center w-full h-full bg-[rgba(0,0,0,0.8)] top-0 left-0 rounded">
+    <h5 class="font-semibold text-white text-lg">Users need to <span class="text-red-500">Have an account</span> to comment</h5>
+  </div>
   <%= form_with model: @new_comment, url: post_comments_path(post.id), class:"rounded" do |f| %>
     <div class="space-y-4">
       <div class="flex flex-col gap-2">

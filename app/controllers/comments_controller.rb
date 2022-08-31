@@ -2,11 +2,9 @@ class CommentsController < ApplicationController
   def create
     if Current.user
       @comment = Current.user.comments.new(comment_params)
-      if @comment.save
-        redirect_to post_item_path(params[:id]), notice: "Comment uploaded successfully"
-      end
+      redirect_to post_item_path(params[:id]), notice: 'Comment uploaded successfully' if @comment.save
     else
-      flash[:warning] = "You need to be signed in!"
+      flash[:warning] = 'You need to be signed in!'
       redirect_to post_item_path(params[:id])
     end
   end
@@ -15,10 +13,10 @@ class CommentsController < ApplicationController
     @comment = Current.user.comments.find(params[:id])
     if Current.user
       @comment.destroy
-      flash[:warning] = "Your comment has been deleted!"
+      flash[:warning] = 'Your comment has been deleted!'
       redirect_to post_item_path(params[:id])
     else
-      flash[:warning] = "You need to be signed in!"
+      flash[:warning] = 'You need to be signed in!'
       redirect_to post_item_path(params[:id])
     end
   end

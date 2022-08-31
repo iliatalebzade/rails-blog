@@ -1,5 +1,5 @@
 class PostController < ApplicationController
-  before_action :set_post, only: [:edit, :update]
+  before_action :set_post, only: %i[edit update]
 
   def create
     if Current.user
@@ -12,12 +12,12 @@ class PostController < ApplicationController
   def new
     blog_post = Post.new post_params
     if blog_post.save
-      redirect_to root_path, notice: "Post created successfully!"
+      redirect_to root_path, notice: 'Post created successfully!'
     else
       render :create, status: :unprocessable_entity
     end
   end
-  
+
   def edit; end
 
   def update
@@ -30,9 +30,7 @@ class PostController < ApplicationController
 
   def getpost
     @post = Post.find(params[:id])
-    if Current.user
-      @new_comment = Comment.new
-    end
+    @new_comment = Comment.new if Current.user
   end
 
   private
