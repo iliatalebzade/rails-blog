@@ -31,6 +31,7 @@ class PostController < ApplicationController
   def getpost
     @post = Post.find(params[:id])
     @new_comment = Comment.new if Current.user
+    @user = Current.user
   end
 
   private

@@ -9,7 +9,7 @@ class AuthenticationController < ApplicationController
       session[:user_id] = @new_user.id
       redirect_to root_path, notice: 'Successfully created an account, welcome!'
     else
-      flash.now[:alert] = 'Invalid credentials, please adress the mentioned problems'
+      flash.now[:alert] = 'Invalid credentials, please address the mentioned problems'
       render :register, status: :unprocessable_entity
     end
   end
